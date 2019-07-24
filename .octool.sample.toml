@@ -1,0 +1,14 @@
+[OpenConnect]
+Juniper = true
+User = "bob"
+Host = "https://vpn.example.com"
+
+[OcProxy]
+Port = "9090"
+
+[StraightForward]
+Enabled = true
+Port = "9091"
+User = "bob"
+Host = "bastion.example.com:22"
+IdentityFile = "/Users/bob/.ssh/id_rsa"
