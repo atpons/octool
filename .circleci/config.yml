@@ -1,0 +1,19 @@
+jobs:
+  build:
+    docker:
+      - image: ecosiadev/bazel-circleci:0.25.2
+    working_directory: /tmp/build
+    steps:
+      - checkout
+      - run:
+          name: Build for linux/amd64
+          command: bazel build cmd/octool --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64
+      - run:
+          name: Build for darwin
+          command: bazel build cmd/octool --platforms=@io_bazel_rules_go//go/toolchain:darwin_amd64
+      - store_artifacts:
+          path: /tmp/build/bazel-bin/cmd/octool/darwin_amd64_pure_stripped/octool
+          destination: octool_darwin_amd64
+      - store_artifacts:
+          path: /tmp/build/bazel-bin/cmd/octool/linux_amd64_pure_stripped/octool
+          destination: octool_linux_amd64
