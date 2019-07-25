@@ -48,10 +48,11 @@ func Load(f string) {
 		if err != nil {
 			panic(err)
 		}
-	}
-	_, err := toml.DecodeFile(f, &Value)
-	if err != nil {
-		panic(err)
+	} else {
+		_, err := toml.DecodeFile(f, &Value)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
 
